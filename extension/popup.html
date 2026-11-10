@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tab Reload Timer</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Tab Reload Timer</h1>
+    <p>Automatically reload the current tab.</p>
+    <form id="timer-form">
+      <label for="seconds">Interval (seconds)</label>
+      <input id="seconds" name="seconds" type="number" min="60" max="86400" step="1" value="60" required>
+      <small>60 seconds to 24 hours. Each tab has its own timer.</small>
+      <div class="buttons">
+        <button id="start" type="submit" disabled>Start</button>
+        <button id="stop" type="button" disabled>Stop</button>
+      </div>
+    </form>
+    <p id="status" role="status" aria-live="polite">Loading…</p>
+    <p class="notice">Reloading can discard unsaved changes. Timers may be delayed while your Mac sleeps and stop when Safari restarts.</p>
+  </main>
+</body>
+</html>

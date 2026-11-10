@@ -1,0 +1,23 @@
+# Local builds and release packages
+/build/
+/dist/
+/DerivedData/
+*.xcarchive
+*.dSYM/
+
+# Xcode user-specific state (keep shared project/workspace files)
+xcuserdata/
+*.xcuserstate
+
+# macOS metadata
+.DS_Store
+._*
+
+# Local secrets and signing materials
+.env
+.env.*
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+AuthKey_*.p8
