@@ -109,7 +109,22 @@ Older Homebrew versions may not have the `trust` command; skip it if it is unava
 
     brew install --cask hejackson2/safari-tab-reload-timer/tab-reload-timer
 
-Launch **Tab Reload Timer** from Applications, then follow the [Safari enablement steps](#4-enable-the-extension-in-safari) above.
+### First launch: make the extension appear in Safari
+
+**Homebrew installs the containing app but does not launch it.** Launch it at least once before looking for the extension in Safari:
+
+1. Open Finder → Applications → **Tab Reload Timer**, or run:
+
+       open "/Applications/Tab Reload Timer.app"
+
+2. If macOS blocks the app, check System Settings → Privacy & Security for **Open Anyway**. Only approve it if you trust the download.
+3. In Safari, enable **Allow Unsigned Extensions** under Develop or Safari Settings → Developer (the location varies by version). Enable developer features under Safari Settings → Advanced if needed.
+4. In the Tab Reload Timer app window, click **Quit and Open Safari Settings…**. This quits the containing app, not Safari.
+5. Select Safari Settings → **Extensions**, enable **Tab Reload Timer**, and approve any requested website permissions.
+
+Keep Safari running during these steps: restarting Safari resets Allow Unsigned Extensions. The **Developer** settings checkbox alone does not enable the individual extension; you must also select it in the **Extensions** tab.
+
+If the extension is missing from the list, first confirm that you launched the containing app successfully, then reopen the Extensions settings. When using a macOS VM such as UTM, perform the installation and first launch **inside the VM**, not on the host Mac.
 
 **The app is ad-hoc signed, not Developer ID signed or notarized.** Homebrew does not bypass macOS Gatekeeper or Safari's unsigned-extension setting. Only approve a downloaded app if you trust its source. Safari's **Allow Unsigned Extensions** setting must be enabled again after Safari quits.
 
