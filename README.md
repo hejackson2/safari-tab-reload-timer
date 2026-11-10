@@ -93,11 +93,45 @@ Review converter warnings and configure deployment targets and app icons in the 
 
 The first reload happens after the selected interval, not immediately. Repeat in another tab for an independent timer.
 
-## Homebrew and downloadable releases
+## Install with Homebrew
 
-This repository contains the source and Xcode project. **A Homebrew tap/cask and a downloadable GitHub Release have not yet been published as part of this repository setup.**
+The published **1.0.0** app requires **Apple Silicon and macOS 27.2 or newer**. You do not need Xcode to install the prebuilt app.
 
-An unsigned or ad-hoc-signed app can be packaged for a personal Homebrew tap, but Homebrew does not bypass macOS Gatekeeper or Safari's unsigned-extension setting. Such a distribution still requires the manual enablement steps above.
+This source repository also serves as a Homebrew tap. Add it using the explicit repository URL:
+
+    brew tap hejackson2/safari-tab-reload-timer https://github.com/hejackson2/safari-tab-reload-timer
+    brew install --cask hejackson2/safari-tab-reload-timer/tab-reload-timer
+
+Launch **Tab Reload Timer** from Applications, then follow the [Safari enablement steps](#4-enable-the-extension-in-safari) above.
+
+**The app is ad-hoc signed, not Developer ID signed or notarized.** Homebrew does not bypass macOS Gatekeeper or Safari's unsigned-extension setting. Only approve a downloaded app if you trust its source. Safari's **Allow Unsigned Extensions** setting must be enabled again after Safari quits.
+
+### Install or upgrade to the latest published version
+
+A fresh install uses the version currently listed in the cask. To refresh an existing tap and upgrade:
+
+    brew update
+    brew upgrade --cask hejackson2/safari-tab-reload-timer/tab-reload-timer
+
+Quit the containing app before upgrading and restart Safari afterward if it retains the old extension. Re-enable Allow Unsigned Extensions after restarting Safari.
+
+Homebrew follows the cask's version, not the latest source commit. Each new release must also update `Casks/tab-reload-timer.rb` with the new version and ZIP checksum before Homebrew can offer it. Downloads use versioned release URLs and verified SHA-256 checksums rather than an unchecked moving "latest" URL.
+
+### Uninstall
+
+    brew uninstall --cask hejackson2/safari-tab-reload-timer/tab-reload-timer
+
+Optionally remove the tap:
+
+    brew untap hejackson2/safari-tab-reload-timer
+
+### Download without Homebrew
+
+Download the app ZIP from the [latest GitHub Release](https://github.com/hejackson2/safari-tab-reload-timer/releases/latest), extract it, and move **Tab Reload Timer.app** into Applications. The same macOS and Safari approval requirements apply.
+
+### Publishing a new release
+
+Build and test the app, package it, and upload the ZIP to a versioned GitHub Release. Update the cask's `version`, `sha256`, and platform requirements (if changed), then commit and push the cask changes. Do not replace a published ZIP without updating its checksum.
 
 To package a locally built app:
 
@@ -130,6 +164,7 @@ The native app has built successfully, all eight background tests passed, and th
 
 ## Repository layout
 
+- `Casks/tab-reload-timer.rb`: Homebrew installation definition for the published app.
 - `extension/`: manifest, background logic, popup, and generated extension icons.
 - `SafariApp/`: containing macOS app, extension target, Xcode project, and app icon assets.
 - `tests/`: Node.js background tests.
