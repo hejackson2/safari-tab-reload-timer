@@ -195,6 +195,12 @@ The native app has built successfully, all eight background tests passed, and th
 
 No analytics, external service calls, or content scripts are included. The extension requests `alarms` and `tabs` permissions to manage timers and reload tabs.
 
+## Built with AI assistance
+
+This project was developed through an iterative conversation with an AI coding assistant, with human review and testing. Read the [development story](docs/vibe-coding.md) and [sanitized conversation excerpts](docs/session-transcript.md) for the implementation process, debugging discoveries, and lessons learned.
+
+These documents are curated historical records, not current installation instructions or a complete verbatim session export.
+
 ## Contributing
 
 Issues and pull requests are welcome. Include your macOS, Safari, and Xcode versions when reporting compatibility or build problems. Run the tests and describe any Safari testing performed with a change.
