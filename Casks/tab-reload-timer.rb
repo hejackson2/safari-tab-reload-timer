@@ -8,11 +8,13 @@ cask "tab-reload-timer" do
   homepage "https://github.com/hejackson2/safari-tab-reload-timer"
 
   depends_on arch: :arm64
-  depends_on macos: ">= 27.2"
+  depends_on macos: :golden_gate
 
   app "Tab Reload Timer.app"
 
   caveats <<~EOS
+    Requires macOS 27.2 or newer. Homebrew's dependency check covers macOS 27
+    at the major-version level; macOS 27.0 and 27.1 cannot run this app.
     This app is ad-hoc signed, not Developer ID signed or notarized.
     Open Tab Reload Timer, then enable Allow Unsigned Extensions in Safari's
     Develop menu and enable Tab Reload Timer in Safari Settings > Extensions.

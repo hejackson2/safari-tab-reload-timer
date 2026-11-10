@@ -100,6 +100,13 @@ The published **1.0.0** app requires **Apple Silicon and macOS 27.2 or newer**. 
 This source repository also serves as a Homebrew tap. Add it using the explicit repository URL:
 
     brew tap hejackson2/safari-tab-reload-timer https://github.com/hejackson2/safari-tab-reload-timer
+
+If your Homebrew version requires explicit trust for third-party taps, review `Casks/tab-reload-timer.rb` before running:
+
+    brew trust --cask hejackson2/safari-tab-reload-timer/tab-reload-timer
+
+Older Homebrew versions may not have the `trust` command; skip it if it is unavailable. Then install:
+
     brew install --cask hejackson2/safari-tab-reload-timer/tab-reload-timer
 
 Launch **Tab Reload Timer** from Applications, then follow the [Safari enablement steps](#4-enable-the-extension-in-safari) above.
